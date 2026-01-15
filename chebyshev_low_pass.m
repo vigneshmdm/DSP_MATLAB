@@ -1,0 +1,13 @@
+clc; 
+clear all;
+close all;
+wp=0.5; %%% chebyshev low pass filter; 
+ws=0.7;
+rp=1; rs=50;
+[n,wn]=cheb1ord(wp,ws,rp,rs);
+[b,a]=cheby1(n,rp,wn);
+[h,w]=freqz(b,a,128);
+plot(abs(h));
+xlabel('frequency');
+ylabel('amplitude');
+title('low pass chebyshev filter response');
